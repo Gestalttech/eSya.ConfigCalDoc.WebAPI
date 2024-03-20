@@ -1,6 +1,5 @@
 {
-
-
+  "W0054": "Calendar already Exist",
   "W0055": "Document ID Already Exist",
   "W0056": "Document Description already Exist",
   "W0057": "Document Short Description already Exist",
@@ -9,5 +8,5 @@
   "S0002": "Updated Sucessfully",
   "S0003": "Activated Successfully",
   "S0004": "De Activated Successfully",
-  "S0005": "Deleted Sucessfully",
+  "S0005": "Deleted Sucessfully"
 }
