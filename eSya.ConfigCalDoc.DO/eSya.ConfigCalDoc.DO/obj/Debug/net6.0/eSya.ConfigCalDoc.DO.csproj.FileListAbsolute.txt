@@ -1,0 +1,11 @@
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\bin\Debug\net6.0\eSya.ConfigCalDoc.DO.deps.json
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\bin\Debug\net6.0\eSya.ConfigCalDoc.DO.dll
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\bin\Debug\net6.0\eSya.ConfigCalDoc.DO.pdb
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\obj\Debug\net6.0\eSya.ConfigCalDoc.DO.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\obj\Debug\net6.0\eSya.ConfigCalDoc.DO.AssemblyInfoInputs.cache
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\obj\Debug\net6.0\eSya.ConfigCalDoc.DO.AssemblyInfo.cs
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\obj\Debug\net6.0\eSya.ConfigCalDoc.DO.csproj.CoreCompileInputs.cache
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\obj\Debug\net6.0\eSya.ConfigCalDoc.DO.dll
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\obj\Debug\net6.0\refint\eSya.ConfigCalDoc.DO.dll
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\obj\Debug\net6.0\eSya.ConfigCalDoc.DO.pdb
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DO\eSya.ConfigCalDoc.DO\obj\Debug\net6.0\ref\eSya.ConfigCalDoc.DO.dll

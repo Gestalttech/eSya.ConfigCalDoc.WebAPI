@@ -1,0 +1,15 @@
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\bin\Debug\net6.0\eSya.ConfigCalDoc.IF.deps.json
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\bin\Debug\net6.0\eSya.ConfigCalDoc.IF.dll
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\bin\Debug\net6.0\eSya.ConfigCalDoc.IF.pdb
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.AssemblyInfoInputs.cache
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.AssemblyInfo.cs
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.csproj.CoreCompileInputs.cache
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.dll
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\refint\eSya.ConfigCalDoc.IF.dll
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.pdb
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\ref\eSya.ConfigCalDoc.IF.dll
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\bin\Debug\net6.0\eSya.ConfigCalDoc.DO.dll
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\bin\Debug\net6.0\eSya.ConfigCalDoc.DO.pdb
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.csproj.AssemblyReference.cache
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.csproj.CopyComplete

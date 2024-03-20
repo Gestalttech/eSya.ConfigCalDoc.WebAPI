@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "3+uuum1M8a7cBbfbaftV+69Bt7mybyctbaKbO8cMPUw=",
+  "Source": "eSya.ConfigCalDoc.WebAPI",
+  "BasePath": "_content/eSya.ConfigCalDoc.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "eSya.ConfigCalDoc.WebAPI\\wwwroot",
+      "Source": "eSya.ConfigCalDoc.WebAPI",
+      "ContentRoot": "D:\\Projects\\eSyaProjects2022\\eSya.ConfigCalDoc.WebAPI\\eSya.ConfigCalDoc.WebAPI\\eSya.ConfigCalDoc.WebAPI\\wwwroot\\",
+      "BasePath": "_content/eSya.ConfigCalDoc.WebAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\Projects\\eSyaProjects2022\\eSya.ConfigCalDoc.WebAPI\\eSya.ConfigCalDoc.WebAPI\\eSya.ConfigCalDoc.WebAPI\\wwwroot\\Resources\\ar-EG.json",
+      "SourceId": "eSya.ConfigCalDoc.WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\eSyaProjects2022\\eSya.ConfigCalDoc.WebAPI\\eSya.ConfigCalDoc.WebAPI\\eSya.ConfigCalDoc.WebAPI\\wwwroot\\",
+      "BasePath": "_content/eSya.ConfigCalDoc.WebAPI",
+      "RelativePath": "Resources/ar-EG.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Resources\\ar-EG.json"
+    },
+    {
+      "Identity": "D:\\Projects\\eSyaProjects2022\\eSya.ConfigCalDoc.WebAPI\\eSya.ConfigCalDoc.WebAPI\\eSya.ConfigCalDoc.WebAPI\\wwwroot\\Resources\\en-US.json",
+      "SourceId": "eSya.ConfigCalDoc.WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\eSyaProjects2022\\eSya.ConfigCalDoc.WebAPI\\eSya.ConfigCalDoc.WebAPI\\eSya.ConfigCalDoc.WebAPI\\wwwroot\\",
+      "BasePath": "_content/eSya.ConfigCalDoc.WebAPI",
+      "RelativePath": "Resources/en-US.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Resources\\en-US.json"
+    }
+  ]
+}

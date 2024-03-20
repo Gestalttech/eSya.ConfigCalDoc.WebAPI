@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "eSya.ConfigCalDoc.IF/1.0.0": {
+        "dependencies": {
+          "eSya.ConfigCalDoc.DO": "1.0.0"
+        },
+        "runtime": {
+          "eSya.ConfigCalDoc.IF.dll": {}
+        }
+      },
+      "eSya.ConfigCalDoc.DO/1.0.0": {
+        "runtime": {
+          "eSya.ConfigCalDoc.DO.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "eSya.ConfigCalDoc.IF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "eSya.ConfigCalDoc.DO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
