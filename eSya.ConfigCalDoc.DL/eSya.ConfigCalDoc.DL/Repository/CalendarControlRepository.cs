@@ -35,7 +35,6 @@ namespace eSya.ConfigCalDoc.DL.Repository
                                      CalenderKey = c.CalenderKey,
                                      FromDate = c.FromDate,
                                      TillDate = c.TillDate,
-                                     YearEndStatus = c.YearEndStatus,
                                      ActiveStatus = c.ActiveStatus
                                  }).OrderByDescending(x => x.Year).ToListAsync();
                    
@@ -69,7 +68,7 @@ namespace eSya.ConfigCalDoc.DL.Repository
                                 CalenderKey = (obj.CalenderType + obj.Year + obj.StartMonth).ToString(),
                                 FromDate = obj.FromDate,
                                 TillDate = obj.TillDate,
-                                YearEndStatus = false,
+                                //YearEndStatus = false,
                                 ActiveStatus = obj.ActiveStatus,
                                 FormId = obj.FormID,
                                 CreatedBy = obj.UserID,

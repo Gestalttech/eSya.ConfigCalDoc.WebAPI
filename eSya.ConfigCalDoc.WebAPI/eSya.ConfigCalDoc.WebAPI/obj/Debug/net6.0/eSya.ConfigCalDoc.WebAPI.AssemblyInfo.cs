@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eSya.ConfigCalDoc.WebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c417f28f55ca7e4e3d5c64ccd857e7b7b868501")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f27aa5e21dd9dc552fd53ed9b073c333cdb67763")]
 [assembly: System.Reflection.AssemblyProductAttribute("eSya.ConfigCalDoc.WebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eSya.ConfigCalDoc.WebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
