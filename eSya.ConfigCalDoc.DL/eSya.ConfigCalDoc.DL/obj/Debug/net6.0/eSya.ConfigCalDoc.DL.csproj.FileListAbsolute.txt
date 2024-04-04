@@ -17,3 +17,4 @@ D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DL\eSya.
 D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DL\eSya.ConfigCalDoc.DL\obj\Debug\net6.0\eSya.ConfigCalDoc.DL.csproj.CopyComplete
 D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DL\eSya.ConfigCalDoc.DL\bin\Debug\net6.0\eSya.ConfigCalDoc.DL.runtimeconfig.json
 D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DL\eSya.ConfigCalDoc.DL\obj\Debug\net6.0\eSya.ConfigCalDoc.DL.genruntimeconfig.cache
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.DL\eSya.ConfigCalDoc.DL\obj\Debug\net6.0\eSya.ConfigCalDoc.DL.sourcelink.json

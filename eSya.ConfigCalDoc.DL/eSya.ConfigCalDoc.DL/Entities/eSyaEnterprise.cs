@@ -8,7 +8,6 @@ namespace eSya.ConfigCalDoc.DL.Entities
     public partial class eSyaEnterprise : DbContext
     {
         public static string _connString = "";
-
         public eSyaEnterprise()
         {
         }
@@ -43,6 +42,13 @@ namespace eSya.ConfigCalDoc.DL.Entities
 
                 entity.Property(e => e.DocumentId).ValueGeneratedNever();
 
+                entity.Property(e => e.CalendarType)
+                    .HasMaxLength(2)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+
+                entity.Property(e => e.ComboId).HasColumnName("ComboID");
+
                 entity.Property(e => e.CreatedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
@@ -58,6 +64,11 @@ namespace eSya.ConfigCalDoc.DL.Entities
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .HasColumnName("FormID");
+
+                entity.Property(e => e.GeneLogic)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .IsFixedLength();
 
                 entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
 

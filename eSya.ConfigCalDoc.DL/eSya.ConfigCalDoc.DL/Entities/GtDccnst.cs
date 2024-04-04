@@ -6,10 +6,16 @@ namespace eSya.ConfigCalDoc.DL.Entities
     public partial class GtDccnst
     {
         public int DocumentId { get; set; }
+        public string GeneLogic { get; set; } = null!;
+        public string CalendarType { get; set; } = null!;
+        public bool IsTransationMode { get; set; }
+        public bool IsStoreCode { get; set; }
+        public bool IsPaymentMode { get; set; }
+        public string SchemaId { get; set; } = null!;
+        public int ComboId { get; set; }
         public string DocumentDesc { get; set; } = null!;
         public string ShortDesc { get; set; } = null!;
         public string DocumentType { get; set; } = null!;
-        public string SchemaId { get; set; } = null!;
         public bool UsageStatus { get; set; }
         public bool ActiveStatus { get; set; }
         public string FormId { get; set; } = null!;

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,9 +31,15 @@ namespace eSya.ConfigCalDoc.DL.Repository
                         s => new DO_DocumentControlMaster
                         {
                             DocumentId = s.DocumentId,
+                            GeneLogic=s.GeneLogic,
+                            CalendarType=s.CalendarType,
+                            IsTransationMode=s.IsTransationMode,
+                            IsStoreCode=s.IsStoreCode,
+                            IsPaymentMode=s.IsPaymentMode,
+                            SchemaId=s.SchemaId,
+                            ComboId=s.ComboId,
                             DocumentDesc = s.DocumentDesc,
                             ShortDesc = s.ShortDesc,
-                            SchemaId = s.SchemaId,
                             DocumentType = s.DocumentType,
                             UsageStatus = s.UsageStatus,
                             ActiveStatus = s.ActiveStatus
@@ -75,13 +82,20 @@ namespace eSya.ConfigCalDoc.DL.Repository
                             }
                             else
                             {
+                                int maxcomboId= db.GtDccnsts.Select(x=>x.ComboId).DefaultIfEmpty().Max()+1;
                                 var _documentcontrol = new GtDccnst
                                 {
                                     DocumentId = obj.DocumentId,
+                                    GeneLogic = obj.GeneLogic,
+                                    CalendarType = obj.CalendarType,
+                                    IsTransationMode = obj.IsTransationMode,
+                                    IsStoreCode = obj.IsStoreCode,
+                                    IsPaymentMode = obj.IsPaymentMode,
+                                    SchemaId = obj.SchemaId,
+                                    ComboId = maxcomboId,
                                     DocumentDesc = obj.DocumentDesc,
                                     ShortDesc = obj.ShortDesc,
                                     DocumentType = obj.DocumentType,
-                                    SchemaId = obj.SchemaId,
                                     UsageStatus=obj.UsageStatus,
                                     ActiveStatus = true,
                                     FormId = obj.FormId,
@@ -112,10 +126,16 @@ namespace eSya.ConfigCalDoc.DL.Repository
                                 }
                             }
 
+                            updatedDocumentControl.GeneLogic = obj.GeneLogic;
+                            updatedDocumentControl.CalendarType = obj.CalendarType;
+                            updatedDocumentControl.IsTransationMode = obj.IsTransationMode;
+                            updatedDocumentControl.IsStoreCode = obj.IsStoreCode;
+                            updatedDocumentControl.IsPaymentMode = obj.IsPaymentMode;
+                            updatedDocumentControl.SchemaId = obj.SchemaId;
+                            //updatedDocumentControl.ComboId = obj.ComboId;
                             updatedDocumentControl.DocumentDesc = obj.DocumentDesc;
                             updatedDocumentControl.ShortDesc = obj.ShortDesc;
                             updatedDocumentControl.DocumentType = obj.DocumentType;
-                            updatedDocumentControl.SchemaId = obj.SchemaId;
                             updatedDocumentControl.UsageStatus = obj.UsageStatus;
                             updatedDocumentControl.ActiveStatus = obj.ActiveStatus;
                             updatedDocumentControl.ModifiedBy = obj.UserID;

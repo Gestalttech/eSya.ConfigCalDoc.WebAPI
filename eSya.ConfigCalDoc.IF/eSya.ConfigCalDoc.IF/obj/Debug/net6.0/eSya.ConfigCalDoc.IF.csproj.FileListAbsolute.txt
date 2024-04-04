@@ -13,3 +13,4 @@ D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.
 D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\bin\Debug\net6.0\eSya.ConfigCalDoc.DO.pdb
 D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.csproj.AssemblyReference.cache
 D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.csproj.CopyComplete
+D:\Projects\eSyaProjects2022\eSya.ConfigCalDoc.WebAPI\eSya.ConfigCalDoc.IF\eSya.ConfigCalDoc.IF\obj\Debug\net6.0\eSya.ConfigCalDoc.IF.sourcelink.json
