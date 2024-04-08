@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eSya.ConfigCalDoc.IF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f27aa5e21dd9dc552fd53ed9b073c333cdb67763")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("eSya.ConfigCalDoc.IF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eSya.ConfigCalDoc.IF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
