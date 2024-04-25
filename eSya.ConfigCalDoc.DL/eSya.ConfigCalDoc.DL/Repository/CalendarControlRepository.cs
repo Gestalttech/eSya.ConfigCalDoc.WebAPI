@@ -56,10 +56,12 @@ namespace eSya.ConfigCalDoc.DL.Repository
                     try
                     {
                         #region Calendar Header
+                        
                         var _finyearExist = db.GtEcclcos.Where(x => x.Year == obj.Year && x.StartMonth==obj.StartMonth && x.CalenderType.ToUpper().Replace(" ", "") == obj.CalenderType.ToUpper().Replace(" ", "")).FirstOrDefault();
 
                         if (_finyearExist == null)
                         {
+                           
                             GtEcclco _chead = new GtEcclco()
                             {
                                 CalenderType = obj.CalenderType,

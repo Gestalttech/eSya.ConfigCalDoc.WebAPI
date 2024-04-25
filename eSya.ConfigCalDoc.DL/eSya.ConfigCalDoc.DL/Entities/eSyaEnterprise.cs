@@ -20,6 +20,7 @@ namespace eSya.ConfigCalDoc.DL.Entities
 
         public virtual DbSet<GtDccnst> GtDccnsts { get; set; } = null!;
         public virtual DbSet<GtDncnfd> GtDncnfds { get; set; } = null!;
+        public virtual DbSet<GtDncnm> GtDncnms { get; set; } = null!;
         public virtual DbSet<GtEcclco> GtEcclcos { get; set; } = null!;
         public virtual DbSet<GtEcfmfd> GtEcfmfds { get; set; } = null!;
         public virtual DbSet<GtEcfmpa> GtEcfmpas { get; set; } = null!;
@@ -37,29 +38,21 @@ namespace eSya.ConfigCalDoc.DL.Entities
         {
             modelBuilder.Entity<GtDccnst>(entity =>
             {
-                entity.HasKey(e => e.DocumentId);
+                entity.HasKey(e => new { e.DocumentId, e.ComboId })
+                    .HasName("PK_GT_DCCNST_1");
 
                 entity.ToTable("GT_DCCNST");
 
-                entity.Property(e => e.DocumentId).ValueGeneratedNever();
+                entity.Property(e => e.ComboId).HasColumnName("ComboID");
 
                 entity.Property(e => e.CalendarType)
                     .HasMaxLength(2)
                     .IsUnicode(false)
                     .IsFixedLength();
 
-                entity.Property(e => e.ComboId).HasColumnName("ComboID");
-
                 entity.Property(e => e.CreatedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
-
-                entity.Property(e => e.DocumentDesc).HasMaxLength(50);
-
-                entity.Property(e => e.DocumentType)
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .IsFixedLength();
 
                 entity.Property(e => e.FormId)
                     .HasMaxLength(10)
@@ -79,10 +72,6 @@ namespace eSya.ConfigCalDoc.DL.Entities
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .HasColumnName("SchemaID");
-
-                entity.Property(e => e.ShortDesc)
-                    .HasMaxLength(4)
-                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<GtDncnfd>(entity =>
@@ -98,6 +87,37 @@ namespace eSya.ConfigCalDoc.DL.Entities
                 entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
 
                 entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<GtDncnm>(entity =>
+            {
+                entity.HasKey(e => e.DocumentId);
+
+                entity.ToTable("GT_DNCNMS");
+
+                entity.Property(e => e.DocumentId).ValueGeneratedNever();
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.DocumentDesc).HasMaxLength(50);
+
+                entity.Property(e => e.DocumentType)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+
+                entity.Property(e => e.FormId)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("FormID");
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedTerminal).HasMaxLength(50);
+
+                entity.Property(e => e.ShortDesc).HasMaxLength(4);
             });
 
             modelBuilder.Entity<GtEcclco>(entity =>

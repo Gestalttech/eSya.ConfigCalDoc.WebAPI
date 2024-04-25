@@ -9,9 +9,17 @@ namespace eSya.ConfigCalDoc.IF
 {
     public interface IDocumentControlRepository
     {
-        #region Document Master
+        #region Document Control Master
         Task<List<DO_DocumentControlMaster>> GetDocumentControlMaster();
-        Task<DO_ReturnParameter> AddOrUpdateDocumentControl(DO_DocumentControlMaster obj);
+        Task<DO_ReturnParameter> AddOrUpdateDocumentControlMaster(DO_DocumentControlMaster obj);
+        Task<DO_ReturnParameter> ActiveOrDeActiveDocumentControlMaster(int DocumentId, bool status);
+        #endregion
+
+        #region Document Standard
+        Task<List<DO_DocumentControlMaster>> GetActiveDocumentControlMaster();
+        Task<List<DO_DocumentControlStandard>> GetDocumentControlStandardbyDocumentId(int DocumentId);
+        Task<DO_ReturnParameter> AddOrUpdateDocumentControlStandard(DO_DocumentControlStandard obj);
+        Task<DO_ReturnParameter> ActiveOrDeActiveDocumentStandardControl(bool status, int documentId, int ComboId);
         #endregion
 
         #region Form Document Link

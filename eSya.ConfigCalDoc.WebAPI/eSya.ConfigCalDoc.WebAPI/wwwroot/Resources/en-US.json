@@ -3,6 +3,7 @@
   "W0055": "Document ID Already Exist",
   "W0056": "Document Description already Exist",
   "W0057": "Document Short Description already Exist",
+  "W0115": "Not Exist",
 
   "S0001": "Saved Sucessfully",
   "S0002": "Updated Sucessfully",

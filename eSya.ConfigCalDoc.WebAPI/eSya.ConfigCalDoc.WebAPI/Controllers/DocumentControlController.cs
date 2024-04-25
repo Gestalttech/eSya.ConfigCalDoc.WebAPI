@@ -15,8 +15,7 @@ namespace eSya.ConfigCalDoc.WebAPI.Controllers
         {
             _documentControlRepository = documentControlRepository;
         }
-
-        #region Document Master
+        #region Document Control Master
 
         /// <summary>
         /// Getting Document Control List.
@@ -34,11 +33,67 @@ namespace eSya.ConfigCalDoc.WebAPI.Controllers
         /// UI Reffered -Document Control
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> AddOrUpdateDocumentControl(DO_DocumentControlMaster obj)
+        public async Task<IActionResult> AddOrUpdateDocumentControlMaster(DO_DocumentControlMaster obj)
         {
-            var msg = await _documentControlRepository.AddOrUpdateDocumentControl(obj);
+            var msg = await _documentControlRepository.AddOrUpdateDocumentControlMaster(obj);
             return Ok(msg);
 
+        }
+
+        /// <summary>
+        /// Activate Or De Activate
+        /// UI Reffered - Document Control 
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> ActiveOrDeActiveDocumentControlMaster(int DocumentId, bool status)
+        {
+            var ds = await _documentControlRepository.ActiveOrDeActiveDocumentControlMaster(DocumentId, status);
+            return Ok(ds);
+        }
+        #endregion
+
+        #region Document Control Standard
+        /// <summary>
+        /// Getting Active Document Control List.
+        /// UI Reffered - Document Control 
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> GetActiveDocumentControlMaster()
+        {
+            var ds = await _documentControlRepository.GetActiveDocumentControlMaster();
+            return Ok(ds);
+        }
+        /// <summary>
+        /// Getting Document Control List.
+        /// UI Reffered - Document Control Grid
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> GetDocumentControlStandardbyDocumentId(int DocumentId)
+        {
+            var ds = await _documentControlRepository.GetDocumentControlStandardbyDocumentId(DocumentId);
+            return Ok(ds);
+        }
+
+        /// <summary>
+        /// Insert or Update Document Control .
+        /// UI Reffered -Document Control
+        /// </summary>
+        [HttpPost]
+        public async Task<IActionResult> AddOrUpdateDocumentControlStandard(DO_DocumentControlStandard obj)
+        {
+            var msg = await _documentControlRepository.AddOrUpdateDocumentControlStandard(obj);
+            return Ok(msg);
+
+        }
+        /// <summary>
+        /// Activate or D-Activate
+        /// UI Reffered - Document Control Grid
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> ActiveOrDeActiveDocumentStandardControl(bool status, int documentId, int ComboId)
+        {
+            var ds = await _documentControlRepository.ActiveOrDeActiveDocumentStandardControl(status, documentId, ComboId);
+            return Ok(ds);
         }
         #endregion
 

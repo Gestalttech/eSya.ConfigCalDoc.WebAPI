@@ -19,31 +19,23 @@ namespace eSya.ConfigCalDoc.DL.Repository
         {
             _localizer = localizer;
         }
-
-        #region Document Master
+        #region Document Control Master
         public async Task<List<DO_DocumentControlMaster>> GetDocumentControlMaster()
         {
             try
             {
                 using (var db = new eSyaEnterprise())
                 {
-                    var result = db.GtDccnsts.Select(
-                        s => new DO_DocumentControlMaster
+
+                    var result = db.GtDncnms
+                        .Select(s => new DO_DocumentControlMaster
                         {
                             DocumentId = s.DocumentId,
-                            GeneLogic=s.GeneLogic,
-                            CalendarType=s.CalendarType,
-                            IsTransationMode=s.IsTransationMode,
-                            IsStoreCode=s.IsStoreCode,
-                            IsPaymentMode=s.IsPaymentMode,
-                            SchemaId=s.SchemaId,
-                            ComboId=s.ComboId,
-                            DocumentDesc = s.DocumentDesc,
                             ShortDesc = s.ShortDesc,
+                            DocumentDesc = s.DocumentDesc,
                             DocumentType = s.DocumentType,
-                            UsageStatus = s.UsageStatus,
-                            ActiveStatus = s.ActiveStatus
-                        }).ToListAsync();
+                            ActiveStatus = s.ActiveStatus,
+                        }).OrderBy(x=>x.DocumentId).ToListAsync();
 
                     return await result;
                 }
@@ -53,7 +45,7 @@ namespace eSya.ConfigCalDoc.DL.Repository
                 throw ex;
             }
         }
-        public async Task<DO_ReturnParameter> AddOrUpdateDocumentControl(DO_DocumentControlMaster obj)
+        public async Task<DO_ReturnParameter> AddOrUpdateDocumentControlMaster(DO_DocumentControlMaster obj)
         {
             using (eSyaEnterprise db = new eSyaEnterprise())
             {
@@ -63,90 +55,76 @@ namespace eSya.ConfigCalDoc.DL.Repository
                     {
                         if (obj.Isadd == 1)
                         {
-                            var RecordExist = db.GtDccnsts.Where(w => w.DocumentId == obj.DocumentId || w.DocumentDesc == obj.DocumentDesc || w.ShortDesc == obj.ShortDesc).FirstOrDefault();
-                            if (RecordExist != null)
+                            var _docIdExists = db.GtDncnms.Where(w => w.DocumentId == obj.DocumentId).Count();
+                            if (_docIdExists > 0)
                             {
-                                if (RecordExist.DocumentId == obj.DocumentId)
-                                {
-                                    return new DO_ReturnParameter() { Status = false, StatusCode = "W0055", Message = string.Format(_localizer[name: "W0055"]) };
-                                }
-                                else if (RecordExist.DocumentDesc == obj.DocumentDesc)
-                                {
-                                    return new DO_ReturnParameter() { Status = false, StatusCode = "W0056", Message = string.Format(_localizer[name: "W0056"]) };
-                                }
-                                else if (RecordExist.ShortDesc == obj.ShortDesc)
-                                {
-                                    return new DO_ReturnParameter() { Status = false, StatusCode = "W0057", Message = string.Format(_localizer[name: "W0057"]) };
-                                }
-
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0055", Message = string.Format(_localizer[name: "W0055"]) };
                             }
-                            else
+                            var _descshort = db.GtDncnms.Where(w => w.ShortDesc.ToUpper().Replace(" ", "") == obj.ShortDesc.ToUpper().Replace(" ", "")).Count();
+                            if (_descshort > 0)
                             {
-                                int maxcomboId= db.GtDccnsts.Select(x=>x.ComboId).DefaultIfEmpty().Max()+1;
-                                var _documentcontrol = new GtDccnst
-                                {
-                                    DocumentId = obj.DocumentId,
-                                    GeneLogic = obj.GeneLogic,
-                                    CalendarType = obj.CalendarType,
-                                    IsTransationMode = obj.IsTransationMode,
-                                    IsStoreCode = obj.IsStoreCode,
-                                    IsPaymentMode = obj.IsPaymentMode,
-                                    SchemaId = obj.SchemaId,
-                                    ComboId = maxcomboId,
-                                    DocumentDesc = obj.DocumentDesc,
-                                    ShortDesc = obj.ShortDesc,
-                                    DocumentType = obj.DocumentType,
-                                    UsageStatus=obj.UsageStatus,
-                                    ActiveStatus = true,
-                                    FormId = obj.FormId,
-                                    CreatedBy = obj.UserID,
-                                    CreatedOn = System.DateTime.Now,
-                                    CreatedTerminal = obj.TerminalID
-                                };
-                                db.GtDccnsts.Add(_documentcontrol);
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0057", Message = string.Format(_localizer[name: "W0057"]) };
                             }
+                            var _desc = db.GtDncnms.Where(w => w.DocumentDesc.ToUpper().Replace(" ", "") == obj.DocumentDesc.ToUpper().Replace(" ", "")).Count();
+                            if (_desc > 0)
+                            {
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0056", Message = string.Format(_localizer[name: "W0056"]) };
+                            }
+                            var _ctrlmaster = new GtDncnm
+                            {
+                                DocumentId = obj.DocumentId,
+                                ShortDesc = obj.ShortDesc,
+                                DocumentDesc = obj.DocumentDesc,
+                                DocumentType = obj.DocumentType,
+                                ActiveStatus = obj.ActiveStatus,
+                                FormId = obj.FormId,
+                                CreatedBy = obj.UserID,
+                                CreatedOn = System.DateTime.Now,
+                                CreatedTerminal = obj.TerminalID
+                            };
+                            db.GtDncnms.Add(_ctrlmaster);
+                            await db.SaveChangesAsync();
+                            dbContext.Commit();
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
                         }
                         else
                         {
-                            var updatedDocumentControl = db.GtDccnsts.Where(w => w.DocumentId == obj.DocumentId).FirstOrDefault();
-                            if (updatedDocumentControl.DocumentDesc != obj.DocumentDesc)
+                           
+                            var _descshortExists = db.GtDncnms.Where(w => w.ShortDesc.ToUpper().Replace(" ", "") == obj.ShortDesc.ToUpper().Replace(" ", "")
+                               && w.DocumentId != obj.DocumentId).Count();
+                            if (_descshortExists > 0)
                             {
-                                var RecordExist = db.GtDccnsts.Where(w => w.DocumentDesc == obj.DocumentDesc).Count();
-                                if (RecordExist > 0)
-                                {
-                                    return new DO_ReturnParameter() { Status = false, StatusCode = "W0056", Message = string.Format(_localizer[name: "W0056"]) };
-                                }
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0057", Message = string.Format(_localizer[name: "W0057"]) };
                             }
-                            if (updatedDocumentControl.ShortDesc != obj.ShortDesc)
+                            var _descExists = db.GtDncnms.Where(w => w.DocumentDesc.ToUpper().Replace(" ", "") == obj.DocumentDesc.ToUpper().Replace(" ", "")
+                               && w.DocumentId != obj.DocumentId).Count();
+                            if (_descExists > 0)
                             {
-                                var RecordExist = db.GtDccnsts.Where(w => w.ShortDesc == obj.ShortDesc).Count();
-                                if (RecordExist > 0)
-                                {
-                                    return new DO_ReturnParameter() { Status = false, StatusCode = "W0057", Message = string.Format(_localizer[name: "W0057"]) };
-                                }
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0056", Message = string.Format(_localizer[name: "W0056"]) };
                             }
+                            var ctrlstand = db.GtDncnms.Where(w => w.DocumentId == obj.DocumentId).FirstOrDefault();
+                            if (ctrlstand != null)
+                            {
+                                ctrlstand.ShortDesc = obj.ShortDesc;
+                                ctrlstand.DocumentDesc = obj.DocumentDesc;
+                                ctrlstand.DocumentType = obj.DocumentType;
+                                ctrlstand.ActiveStatus = obj.ActiveStatus;
+                                ctrlstand.ModifiedBy = obj.UserID;
+                                ctrlstand.ModifiedOn = System.DateTime.Now;
+                                ctrlstand.ModifiedTerminal = obj.TerminalID;
+                                await db.SaveChangesAsync();
+                                dbContext.Commit();
+                                return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
+                            }
+                            else
+                            {
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0115", Message = string.Format(_localizer[name: "W0115"]) };
 
-                            updatedDocumentControl.GeneLogic = obj.GeneLogic;
-                            updatedDocumentControl.CalendarType = obj.CalendarType;
-                            updatedDocumentControl.IsTransationMode = obj.IsTransationMode;
-                            updatedDocumentControl.IsStoreCode = obj.IsStoreCode;
-                            updatedDocumentControl.IsPaymentMode = obj.IsPaymentMode;
-                            updatedDocumentControl.SchemaId = obj.SchemaId;
-                            //updatedDocumentControl.ComboId = obj.ComboId;
-                            updatedDocumentControl.DocumentDesc = obj.DocumentDesc;
-                            updatedDocumentControl.ShortDesc = obj.ShortDesc;
-                            updatedDocumentControl.DocumentType = obj.DocumentType;
-                            updatedDocumentControl.UsageStatus = obj.UsageStatus;
-                            updatedDocumentControl.ActiveStatus = obj.ActiveStatus;
-                            updatedDocumentControl.ModifiedBy = obj.UserID;
-                            updatedDocumentControl.ModifiedOn = System.DateTime.Now;
-                            updatedDocumentControl.ModifiedTerminal = obj.TerminalID;
+                            }
 
                         }
 
-                        await db.SaveChangesAsync();
-                        dbContext.Commit();
-                        return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+
 
                     }
                     catch (Exception ex)
@@ -157,7 +135,219 @@ namespace eSya.ConfigCalDoc.DL.Repository
                 }
             }
         }
+        public async Task<DO_ReturnParameter> ActiveOrDeActiveDocumentControlMaster(int DocumentId,bool status)
+        {
+            using (var db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
 
+                        GtDncnm docmaster = db.GtDncnms.Where(d => d.DocumentId == DocumentId).FirstOrDefault();
+                        if (docmaster == null)
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0115", Message = string.Format(_localizer[name: "W0115"]) };
+                        }
+
+                        docmaster.ActiveStatus = status;
+                        await db.SaveChangesAsync();
+                        dbContext.Commit();
+
+                        if (status == true)
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0003", Message = string.Format(_localizer[name: "S0003"]) };
+                        else
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0004", Message = string.Format(_localizer[name: "S0004"]) };
+
+
+
+                    }
+
+
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Document Standard
+        public async Task<List<DO_DocumentControlMaster>> GetActiveDocumentControlMaster()
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+
+                    var result = db.GtDncnms.Where(x=>x.ActiveStatus)
+                        .Select(s => new DO_DocumentControlMaster
+                        {
+                            DocumentId = s.DocumentId,
+                            DocumentDesc = s.DocumentDesc,
+                        }).OrderBy(x=>x.DocumentDesc).ToListAsync();
+
+                    return await result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<List<DO_DocumentControlStandard>> GetDocumentControlStandardbyDocumentId(int DocumentId)
+        {
+            try
+            {
+                using (var db = new eSyaEnterprise())
+                {
+                    
+                    var result = db.GtDccnsts.Where(x=>x.DocumentId==DocumentId)
+                        .Join(db.GtDncnms,
+                         ds => ds.DocumentId,
+                         dm => dm.DocumentId,
+                        (ds, dm) => new { ds, dm })
+                        .Select(
+                        s => new DO_DocumentControlStandard
+                        {
+                            DocumentId = s.ds.DocumentId,
+                            ComboId = s.ds.ComboId,
+                            GeneLogic =s.ds.GeneLogic,
+                            CalendarType=s.ds.CalendarType,
+                            IsTransationMode=s.ds.IsTransationMode,
+                            IsStoreCode=s.ds.IsStoreCode,
+                            IsPaymentMode=s.ds.IsPaymentMode,
+                            SchemaId=s.ds.SchemaId,
+                            UsageStatus = s.ds.UsageStatus,
+                            ActiveStatus = s.ds.ActiveStatus,
+                            DocumentDesc = s.dm.DocumentDesc,
+                            ShortDesc = s.dm.ShortDesc,
+                            DocumentType = s.dm.DocumentType,
+                            
+                        }).ToListAsync();
+
+                    return await result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<DO_ReturnParameter> AddOrUpdateDocumentControlStandard(DO_DocumentControlStandard obj)
+        {
+            using (eSyaEnterprise db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        if (obj.Isadd == 1)
+                        {
+
+
+                            //int maxcomboId= db.GtDccnsts.Where(x=>x.DocumentId== obj.DocumentId).Select(x=>x.ComboId).DefaultIfEmpty().Max()+1;
+
+                            int maxcomboId = db.GtDccnsts.Select(x => x.ComboId).DefaultIfEmpty().Max() + 1;
+                            var _documentcontrol = new GtDccnst
+                                {
+                                    DocumentId = obj.DocumentId,
+                                    ComboId = maxcomboId,
+                                    GeneLogic = obj.GeneLogic,
+                                    CalendarType = obj.CalendarType,
+                                    IsTransationMode = obj.IsTransationMode,
+                                    IsStoreCode = obj.IsStoreCode,
+                                    IsPaymentMode = obj.IsPaymentMode,
+                                    SchemaId = obj.SchemaId,
+                                    ActiveStatus = obj.ActiveStatus,
+                                    FormId = obj.FormId,
+                                    CreatedBy = obj.UserID,
+                                    CreatedOn = System.DateTime.Now,
+                                    CreatedTerminal = obj.TerminalID
+                                };
+                                db.GtDccnsts.Add(_documentcontrol);
+                            await db.SaveChangesAsync();
+                            dbContext.Commit();
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0001", Message = string.Format(_localizer[name: "S0001"]) };
+                        }
+                        else
+                        {
+                            var ctrlstand = db.GtDccnsts.Where(w => w.DocumentId == obj.DocumentId && w.ComboId==obj.ComboId).FirstOrDefault();
+                            if (ctrlstand != null)
+                            {
+                                ctrlstand.GeneLogic = obj.GeneLogic;
+                                ctrlstand.CalendarType = obj.CalendarType;
+                                ctrlstand.IsTransationMode = obj.IsTransationMode;
+                                ctrlstand.IsStoreCode = obj.IsStoreCode;
+                                ctrlstand.IsPaymentMode = obj.IsPaymentMode;
+                                ctrlstand.SchemaId = obj.SchemaId;
+                                ctrlstand.UsageStatus = obj.UsageStatus;
+                                ctrlstand.ActiveStatus = obj.ActiveStatus;
+                                ctrlstand.ModifiedBy = obj.UserID;
+                                ctrlstand.ModifiedOn = System.DateTime.Now;
+                                ctrlstand.ModifiedTerminal = obj.TerminalID;
+                                await db.SaveChangesAsync();
+                                dbContext.Commit();
+                                return new DO_ReturnParameter() { Status = true, StatusCode = "S0002", Message = string.Format(_localizer[name: "S0002"]) };
+                            }
+                            else
+                            {
+                                return new DO_ReturnParameter() { Status = false, StatusCode = "W0115", Message = string.Format(_localizer[name: "W0115"]) };
+
+                            }
+
+                        }
+
+                       
+
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+        public async Task<DO_ReturnParameter> ActiveOrDeActiveDocumentStandardControl(bool status, int documentId, int ComboId)
+        {
+            using (var db = new eSyaEnterprise())
+            {
+                using (var dbContext = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+
+                        GtDccnst docstandard = db.GtDccnsts.Where(d => d.DocumentId == documentId && d.ComboId== ComboId).FirstOrDefault();
+                        if (docstandard == null)
+                        {
+                            return new DO_ReturnParameter() { Status = false, StatusCode = "W0115", Message = string.Format(_localizer[name: "W0115"]) };
+                        }
+
+                        docstandard.ActiveStatus = status;
+                        await db.SaveChangesAsync();
+                        dbContext.Commit();
+
+                        if (status == true)
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0003", Message = string.Format(_localizer[name: "S0003"]) };
+                        else
+                            return new DO_ReturnParameter() { Status = true, StatusCode = "S0004", Message = string.Format(_localizer[name: "S0004"]) };
+
+
+
+                    }
+
+
+                    catch (Exception ex)
+                    {
+                        dbContext.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Form Document Link
@@ -198,7 +388,7 @@ namespace eSya.ConfigCalDoc.DL.Repository
 
 
 
-                    var ds = await db.GtDccnsts.Where(x => x.ActiveStatus == true)
+                    var ds = await db.GtDncnms.Where(x => x.ActiveStatus == true)
                    .GroupJoin(db.GtDncnfds.Where(w => w.FormId == formID),
                      d => d.DocumentId,
                      l => l.DocumentId,
@@ -285,7 +475,7 @@ namespace eSya.ConfigCalDoc.DL.Repository
                 using (var db = new eSyaEnterprise())
                 {
 
-                    var ds = await db.GtDccnsts.Where(w => w.ActiveStatus == true).Select(x => new DO_FormDocumentLink
+                    var ds = await db.GtDncnms.Where(w => w.ActiveStatus == true).Select(x => new DO_FormDocumentLink
                     {
                         DocumentId = x.DocumentId,
                         DocumentName = x.DocumentDesc,
